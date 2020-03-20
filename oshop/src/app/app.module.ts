@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// ng-bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+// Router
 import {RouterModule, Route} from '@angular/router';
 
 // FIRESTORE
@@ -32,9 +35,10 @@ const routes: Route[] = [
   {path: 'shopping-cart', component: ShoppingCartComponent },
   {path: 'check-out', component: CheckOutComponent },
   {path: 'order-success', component: OrderSuccessComponent },
+  {path: 'my/orders', component:MyOrdersComponent},
   {path: 'login', component: LoginComponent },
   {path: 'admin/products', component: AdminProductComponent },
-  {path: 'admin/orders', component: AdminProductComponent }
+  {path: 'admin/orders',component: AdminOrdersComponent }
 ];
 
 @NgModule({
@@ -57,7 +61,8 @@ const routes: Route[] = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
