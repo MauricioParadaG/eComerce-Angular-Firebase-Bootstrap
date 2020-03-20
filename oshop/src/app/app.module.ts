@@ -11,7 +11,10 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule,AngularFireAuth } from "@angular/fire/auth";
+
+
+
 
 
 // Components
@@ -63,6 +66,7 @@ const routes: Route[] = [
     AngularFirestoreModule,
     RouterModule.forRoot(routes),
     NgbModule
+    //AngularFireAuth  si lo llamo, lanza error, pero en login si funciono
   ],
   providers: [],
   bootstrap: [AppComponent]
