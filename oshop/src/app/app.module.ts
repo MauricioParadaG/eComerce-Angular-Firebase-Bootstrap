@@ -29,18 +29,19 @@ import { ProductFormComponent } from './components/admin/product-form/product-fo
 
 //Services
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'products', component: ProductsComponent },
   {path: 'shopping-cart', component: ShoppingCartComponent },
-  {path: 'check-out', component: CheckOutComponent },
-  {path: 'order-success', component: OrderSuccessComponent },
-  {path: 'my/orders', component:MyOrdersComponent},
+  {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
+  {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
+  {path: 'my/orders', component:MyOrdersComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent },
-  {path: 'admin/products', component: AdminProductComponent },
-  {path: 'admin/orders',component: AdminOrdersComponent }
+  {path: 'admin/products', component: AdminProductComponent, canActivate: [AuthGuardService] },
+  {path: 'admin/orders',component: AdminOrdersComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
@@ -67,7 +68,7 @@ const routes: Route[] = [
     NgbModule
     //AngularFireAuth  si lo llamo, lanza error, pero en login si funciono
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
