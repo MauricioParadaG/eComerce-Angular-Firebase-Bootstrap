@@ -13,6 +13,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule,AngularFireAuth } from "@angular/fire/auth";
 
+
+
+
 // Components
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
@@ -30,6 +33,7 @@ import { ProductFormComponent } from './components/admin/product-form/product-fo
 //Services
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
 
 
 const routes: Route[] = [
@@ -64,11 +68,12 @@ const routes: Route[] = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(routes),
     NgbModule
     //AngularFireAuth  si lo llamo, lanza error, pero en login si funciono
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
