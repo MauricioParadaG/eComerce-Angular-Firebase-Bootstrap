@@ -13,10 +13,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule,AngularFireAuth } from "@angular/fire/auth";
 
-
-
-
-
 // Components
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
@@ -30,6 +26,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminProductComponent } from './components/admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 import { ProductFormComponent } from './components/admin/product-form/product-form.component';
+
+//Services
+import { AuthService } from './services/auth.service';
 
 
 const routes: Route[] = [
@@ -68,7 +67,7 @@ const routes: Route[] = [
     NgbModule
     //AngularFireAuth  si lo llamo, lanza error, pero en login si funciono
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
