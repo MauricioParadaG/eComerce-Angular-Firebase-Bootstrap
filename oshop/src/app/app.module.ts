@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 // ng-bootstrap
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -36,6 +37,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { CategoryService } from './services/categories/category.service';
+import { ProductService } from './services/firebase/product.service';
 
 
 const routes: Route[] = [
@@ -74,7 +76,8 @@ const routes: Route[] = [
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     RouterModule.forRoot(routes),
-    NgbModule
+    NgbModule,
+    FormsModule
     //AngularFireAuth  si lo llamo, lanza error, pero en login si funciono
   ],
   providers: [
@@ -82,7 +85,8 @@ const routes: Route[] = [
     AuthGuardService,
     UserService,
     AdminAuthGuardService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
