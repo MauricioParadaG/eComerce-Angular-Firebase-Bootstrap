@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { CategoryService } from 'src/app/services/categories/category.service';
 
 @Component({
   selector: 'app-product-form',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+  categories$;
 
-  constructor() { }
+  constructor(
+    categoryService: CategoryService ) { 
+      this.categories$ = categoryService.getCategories();
+    }
 
+
+  
   ngOnInit(): void {
   }
 
