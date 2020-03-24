@@ -1,1 +1,52 @@
-<a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+<p>
+  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products$ | async">
+      <td>{{p.title}}</td>
+      <td>{{p.price}}</td>
+      <td>{{p.category}}</td>
+      <td>
+        <button (click)="editProduct($event, p)" class="btn btn-secondary">
+          Edit
+        </button>
+      </td>
+      <div *ngIf="editing && editingProduct.key == p.key">
+        <form (ngSubmit)="updateProduct()">
+          <div class="form-group mt-2">
+            <input type="text" name="title" [(ngModel)]="editingProduct.title" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <input type="number" name="price" [(ngModel)]="editingProduct.price" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <select #category="ngModel" [(ngModel)]="editingProduct.category" id="category" name="category" class="form-control">
+              <option value=""></option>
+              <option *ngFor="let c of categories$ | async" [value]="c.key">{{c.name}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="imageUrl" [(ngModel)]="editingProduct.imageUrl" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success btn-block">
+            Update
+          </button>
+        </form>
+      </div>
+    </tr>
+  </tbody>
+</table>

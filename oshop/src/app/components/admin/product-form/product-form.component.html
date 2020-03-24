@@ -1,32 +1,48 @@
-<form (ngSubmit)="save(form.value)" #form="ngForm">
-    <!-- Titulo producto -->
-    <div class="form-group"> 
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" ngModel  class="form-control">
-    </div>
-    <!-- Precio -->
-    <div class="form-group">
-        <label for="price">Price</label>
-        <div class="input-group-prepend">
-            <span class="input-group-text">$</span>
-            <input id="price" name="price" ngModel type="number" class="form-control">
-          </div>
-    </div>
-    <!--Categorias -->
-    <div class="form-group"> 
-        <label for="category">Category</label>
-        <select ngModel  id="category" name="category" #category="ngModel" class="form-control">
-            <option value=""></option>
-            <option *ngFor="let c of categories$ | async" [value]="c.key">{{c.name}}
-            </option>
-        </select>
-    </div>
-    <!-- Imagenes -->
-    <div class="form-group"> 
-        <label for="imageUrl">Image Url</label>
-        <input id="imageUrl" name="imageUrl" ngModel type="text" class="form-control">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Save</button>
+ <!-- columnas de aplicación-->
+ <div class="row">
+   <div class="col-md-5">
+     <form (ngSubmit)="save(form.value)" #form="ngForm">
+       <!-- Titulo producto -->
+       <div class="form-group">
+         <label for="title">Title</label>
+         <input #title="ngModel" type="text" id="title" name="title" ngModel class="form-control">
+       </div>
+       <!-- Precio -->
+       <div class="form-group">
+         <label for="price">Price</label>
+         <div class="input-group-prepend">
+           <span class="input-group-text">$</span>
+           <input #price="ngModel" id="price" name="price" ngModel type="number" class="form-control">
+         </div>
+       </div>
+       <!--Categorias -->
+       <div class="form-group">
+         <label for="category">Category</label>
+         <select #category="ngModel" ngModel id="category" name="category" class="form-control">
+           <option value=""></option>
+           <option *ngFor="let c of categories$ | async" [value]="c.key">{{c.name}}
+           </option>
+         </select>
+       </div>
+       <!-- Imagenes -->
+       <div class="form-group">
+         <label for="imageUrl">Image Url</label>
+         <input #imageUrl="ngModel" id="imageUrl" name="imageUrl" ngModel type="text" class="form-control">
+       </div>
 
-</form>
+       <button type="submit" class="btn btn-primary">Save</button>
+
+     </form>
+
+     <!-- Segunda columna, card -->
+   </div>
+   <div class="col-md-7">
+     <div class="card" style="width: 27rem;">
+       <img [src]="imageUrl.value" class="card-img-top">
+       <div class="card-body">
+         <h5 class="card-title">{{title.value}}</h5>
+         <p class="card-text">{{price.value | currency:'COP':true}}</p>
+       </div>
+     </div>
+   </div>
+ </div>
