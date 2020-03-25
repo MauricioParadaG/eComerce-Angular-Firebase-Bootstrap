@@ -11,10 +11,6 @@ export class ProductService {
   //productDoc;
   constructor(private db: AngularFireDatabase) { }
 
-  saveProduct (product){
-    return this.db.list('/products').push(product);
-  }
-
   getProducts() {
     return this.db.list('/products').snapshotChanges().pipe(map(actions =>
       actions.map(a => ({
@@ -23,10 +19,18 @@ export class ProductService {
     ));
   } 
 
-  /*
-  updateProduct(id,product) {
-    this.productDoc = this.db.object('/products/' + id).update(product);
+  deleteProduct(key){
+    return this.db.object('/products/'+ key).remove();
   }
-*/
+
+  saveProduct (product){
+    return this.db.list('/products').push(product);
+  }
+
+  updateProduct(key, product) {
+    return this.db.object('/products/' + key).update(product);
+
+  }
+
 
 }
