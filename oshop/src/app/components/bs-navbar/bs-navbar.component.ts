@@ -10,6 +10,7 @@ import { AppUser } from 'src/app/models/app-user';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent {
+  public isCollapsed = true; // propiedad del html
   appUser: AppUser;
 
   constructor(private auth: AuthService) {

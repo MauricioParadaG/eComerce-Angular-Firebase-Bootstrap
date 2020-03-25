@@ -1,3 +1,8 @@
 .dropdown-toggle{
     cursor: pointer;
 }
+
+.navbar-brand {
+    color: #67d3c1;
+    cursor: pointer;
+}
