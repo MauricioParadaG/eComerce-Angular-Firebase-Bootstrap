@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/firebase/product.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
 import { Subscription } from 'rxjs';
+import { Product } from 'src/app/models/products';
 
 @Component({
   selector: 'app-admin-product',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-product.component.css']
 })
 export class AdminProductComponent implements OnInit, OnDestroy {
-  products: any[];
+  products: Product[];
   editing: boolean = false;
   editingProduct;
   categories$;
@@ -23,8 +24,9 @@ export class AdminProductComponent implements OnInit, OnDestroy {
     { 
     // muestra los productos en pantalla
     //this.products$ = this.productService.getProducts();
-    
-   this.subscription = this.productService.getProducts().subscribe(products => this.filteredProducts = this.products = products);
+   this.subscription = this.productService.getProducts().subscribe((products: Product[]) => 
+   this.filteredProducts = this.products = products);
+
     // obtiene categorias para el edit
     this.categories$ = categoryService.getCategories();
   }
