@@ -1,0 +1,217 @@
+ /*
+.btn-lg {
+    padding: .75rem 1.25rem;
+    font-weight: 700;
+    margin-right: 70px;
+  }
+ 
+  
+
+  
+  body {
+    display: -ms-flexbox;
+    display: flex;
+
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  }
+  html, body { 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*/
+  /*
+ * Footer
+ */
+   .mastfoot {
+    width: 100%;
+    height: 50px;
+    bottom: 0;  /* para que se quede pegado al piso  */
+    position: fixed;
+   color: rgba(2, 2, 2, 0.5); 
+   } 
+
+  
+.btn{ 
+
+ font-size: 16px;
+ line-height: 32px;
+ text-align: center !important; 
+ border-radius: 9px;
+ margin-right: 50px;  /* Separacion de botones pegados*/
+ display: inline-block;
+}
+
+h1 {
+    margin-bottom: 20px; /* o el tamaño que quieres que exista entre h1 y el siguiente elemento */
+    }
+
+p {
+    margin-bottom: 15px; /* o el tamaño que quieres que exista entre h1 y el siguiente elemento */
+   }
+
+/* font-family: tahoma; */
+/* font-weight: 700; */
+/*
+width: 250px;
+height: 60px;
+
+text-transform: uppercase;
+display: inline-block;
+border: 2px solid transparent;
+*/
+/* transition: all 0.5s linear; */
+/* color:#272929; */
+/* background: white; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.navbar {
+  box-shadow: 2px 2px 5px #000;
+  opacity: 0.9;
+}
+
+.navbar .nav-item .nav-link {
+  color: #fff;
+}
+
+.main-header {
+  position: relative;
+  background: url(../../../assets/img/background.jpg);
+  background-size: cover;
+  
+}
+
+.background-overlay {
+  background: rgba(48, 51, 107,.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form-control, .btn{
+  border-radius: 0;
+}
+
+.team, footer {
+  background: #30336b;
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#showcase {
+    margin-top: -30px;
+  }
+  
+  .carousel-item {
+    height: 550px; 
+  }
+  
+  .carousel-image-1 {
+    background: url('../../../assets/img/background.jpg');
+    background-size: cover; 
+  }
+  
+  .carousel-image-2 {
+    background: url('../../../assets/img/salad.jpg');
+    background-size: cover; 
+  }
+  
+  .carousel-image-3 {
+    background: url('../../../assets/img/wings.jpg');
+    background-size: cover; 
+  }
+  
+  .dark-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+  }
+
+  
+  #skills-header {
+    position: relative;
+    min-height: 200px;
+    background: url('../../../assets/img/dinner.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #fff; 
+    background-position: 0px -300px;
+  }
+    
+  
+  .fa {
+    font-size: 50px; 
+  }
+   
+  

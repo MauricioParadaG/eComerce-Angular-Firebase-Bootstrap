@@ -38,10 +38,14 @@ import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { CategoryService } from './services/categories/category.service';
 import { ProductService } from './services/firebase/product.service';
+import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
+import { DemoComponent } from './components/demo/demo/demo.component';
+
 
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
+  {path: 'demo', component: DemoComponent },
   {path: 'products', component: ProductsComponent },
   {path: 'shopping-cart', component: ShoppingCartComponent },
   {path: 'login', component: LoginComponent },
@@ -67,7 +71,10 @@ const routes: Route[] = [
     AdminProductComponent,
     AdminOrdersComponent,
     ProductFormComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFilterComponent,
+    DemoComponent
+   
   ],
   imports: [
     BrowserModule,
