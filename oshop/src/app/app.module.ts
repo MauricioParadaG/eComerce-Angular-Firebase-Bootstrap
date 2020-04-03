@@ -40,6 +40,7 @@ import { CategoryService } from './services/categories/category.service';
 import { ProductService } from './services/firebase/product.service';
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { DemoComponent } from './components/demo/demo/demo.component';
+import { ProductCardComponent } from './components/shareUsersAdmin/product-card/product-card.component';
 
 
 
@@ -73,7 +74,8 @@ const routes: Route[] = [
     ProductFormComponent,
     LoginComponent,
     ProductFilterComponent,
-    DemoComponent
+    DemoComponent,
+    ProductCardComponent
    
   ],
   imports: [
