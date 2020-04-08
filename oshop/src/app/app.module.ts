@@ -41,6 +41,7 @@ import { ProductService } from './services/firebase/product.service';
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { DemoComponent } from './components/demo/demo/demo.component';
 import { ProductCardComponent } from './components/shareUsersAdmin/product-card/product-card.component';
+import { ShoppingCartService } from './services/firebaseCart/shopping-cart.service';
 
 
 
@@ -95,7 +96,8 @@ const routes: Route[] = [
     UserService,
     AdminAuthGuardService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
