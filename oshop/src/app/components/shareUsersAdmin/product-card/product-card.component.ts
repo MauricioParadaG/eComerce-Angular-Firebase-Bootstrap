@@ -10,10 +10,22 @@ import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart
 })
 export class ProductCardComponent implements OnInit {
   @Input('product') product: Product;
+  @Input('shopping-cart') shoppingCart;
+  
   constructor(private shoppingCartService : ShoppingCartService) { }
 
   addToCart(product: Product){
     this.shoppingCartService.addToCart(product);
+  }
+
+  getQuantity(){
+    // console.log(this.shoppingCart)
+    if (!this.shoppingCart) return 0;
+   // console.log(this.shoppingCart[this.product.key])
+
+    let item = this.shoppingCart.items[this.product.key];
+    // console.log( "item " + item);
+    return item ? item.quantity: 0 ;
   }
 
   ngOnInit(): void {

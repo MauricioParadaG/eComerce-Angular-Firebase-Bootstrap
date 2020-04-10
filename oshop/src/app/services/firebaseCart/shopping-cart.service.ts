@@ -17,12 +17,14 @@ export class ShoppingCartService {
     });
   }
 
-  // metodo temporar que ahorita borro, para seguirle el hilo al video, No sirve para nada
- private getCart(cartId: string){
+  // Sirve para obtener el cart de cada usuario y pasarlo al componente del product.component.ts, Asi obtiene la cantidad de cada producto
+  async getCart(){
+   let cartId = await this.getOrCreateCartId();
+   // console.log(cartId);
   return this.db.object('/shopping-carts/' + cartId);
- }
+  }
   
-  private async getOrCreateCartId() {
+  private async getOrCreateCartId(): Promise<string> {
     const cartId = localStorage.getItem('cartId');
     //console.log(cartId);
 
@@ -45,9 +47,7 @@ export class ShoppingCartService {
     item$.snapshotChanges().pipe(take(1)).subscribe(
       i => {
       item$.update({product: product, quantity: ((i.payload.hasChild('quantity')) ? i.payload.val()['quantity'] + 1 : 1)  });
-
-      console.log('adding new product to cart');
-          
+     // console.log('adding new product to cart');
       }
     )
   }
