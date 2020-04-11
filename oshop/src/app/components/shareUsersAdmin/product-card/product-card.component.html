@@ -7,13 +7,20 @@
 
   <div class= "card-footer p-0">
     <button  
-    (click)="addToCart(product)"  class="btn btn-secondary btn-block">Add to Invest Cart</button>
-    
-    
-      <div >
-        {{getQuantity()}}
+    *ngIf="getQuantity() === 0; else updateQuantity"
+    (click)="addToCart()"  class="btn btn-secondary btn-block">Add to Invest Cart</button>
+
+    <ng-template #updateQuantity>
+     <div class="row no-gutters"> 
+      <div class="col-2">
+        <button (click)="removeFromCart()"  class="btn btn-secondary btn-block"><b>-</b></button>
+      </div> 
+      <div class="col-8 text-center mt-1">{{ getQuantity() }} in Cart</div>
+      <div class="col-2">
+        <button (click)="addToCart()"  class="btn btn-secondary btn-block"><b>+</b></button>
       </div>
-    
+    </div>
+    </ng-template>
   
   </div>
 </div>

@@ -14,15 +14,18 @@ export class ProductCardComponent implements OnInit {
   
   constructor(private shoppingCartService : ShoppingCartService) { }
 
-  addToCart(product: Product){
-    this.shoppingCartService.addToCart(product);
+  addToCart(){
+    this.shoppingCartService.addToCart(this.product);
+  }
+
+  removeFromCart(){
+    this.shoppingCartService.removeFromCart(this.product);
   }
 
   getQuantity(){
     // console.log(this.shoppingCart)
     if (!this.shoppingCart) return 0;
-   // console.log(this.shoppingCart[this.product.key])
-
+   
     let item = this.shoppingCart.items[this.product.key];
     // console.log( "item " + item);
     return item ? item.quantity: 0 ;

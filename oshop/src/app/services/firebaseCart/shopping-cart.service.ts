@@ -40,18 +40,25 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  public async addToCart(product){
+  public async addToCart(product: Product){
+   this.updateItem(product,1);
+  }
+
+  public async removeFromCart(product: Product){
+    this.updateItem(product,-1);
+  }
+
+  private async updateItem(product: Product, change:number ){
     let cartId = await this.getOrCreateCartId();
     let item$ =  this.getItem(cartId, product.key);
     
     item$.snapshotChanges().pipe(take(1)).subscribe(
       i => {
-      item$.update({product: product, quantity: ((i.payload.hasChild('quantity')) ? i.payload.val()['quantity'] + 1 : 1)  });
+      item$.update({product: product, quantity: ((i.payload.hasChild('quantity')) ? i.payload.val()['quantity'] + change : 1)  });
      // console.log('adding new product to cart');
       }
     )
   }
-
 
 
 }
