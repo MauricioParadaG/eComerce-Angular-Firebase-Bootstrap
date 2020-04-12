@@ -12,7 +12,10 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart" (click)="isCollapsed = true">Investing Cart</a>
+        <a class="nav-link" routerLink="/shopping-cart" (click)="isCollapsed = true">
+          Investing Cart
+          <span class="badge badge-light badge-pill pt-2 pb-2"> {{shoppingCartItemCount}}</span>
+        </a>
       </li>
   <!--y Login dentro de template para cumple el else -->
   <ng-template #anonymousUser>

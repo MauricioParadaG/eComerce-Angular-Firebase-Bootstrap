@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import{Product} from '../../models/products';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ShoppingCartService {
   }
 
   // Sirve para obtener el cart de cada usuario y pasarlo al componente del product.component.ts, Asi obtiene la cantidad de cada producto
-  async getCart(){
+  async getCart(): Promise<AngularFireObject<ShoppingCart>>{
    let cartId = await this.getOrCreateCartId();
    // console.log(cartId);
   return this.db.object('/shopping-carts/' + cartId);
