@@ -1,9 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 //import { AngularFireAuth } from '@angular/fire/auth';
-//import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { AppUser } from 'src/app/models/app-user';
 import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart.service';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
 
 @Component({
   selector: 'bs-navbar',
@@ -13,13 +14,13 @@ import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart
 export class BsNavbarComponent implements OnInit{
   public isCollapsed = true; // propiedad del html
   appUser: AppUser;
-  shoppingCartItemCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(
     private auth: AuthService,
     private shoppingCartService: ShoppingCartService
     ) {
-    auth.appUser$.subscribe(appUser =>this.appUser = appUser);
+
     //afireAuth.authState.subscribe(user => this.user = user); Antigua forma de subscribe
    }
 
@@ -28,15 +29,10 @@ export class BsNavbarComponent implements OnInit{
   }
 
   async ngOnInit() {
-    let cart$ =  await this.shoppingCartService.getCart();
-    
-    cart$.valueChanges().subscribe(cart => {
-      this.shoppingCartItemCount = 0;
-      for (let productId in cart.items)
-        this.shoppingCartItemCount += cart.items[productId].quantity;
-      
-    });
+    this.auth.appUser$.subscribe(appUser =>this.appUser = appUser);
 
-  }
+
+    this.cart$ =  await this.shoppingCartService.getCart();
+ }
 
 }

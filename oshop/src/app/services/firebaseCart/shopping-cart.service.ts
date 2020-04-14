@@ -19,12 +19,20 @@ export class ShoppingCartService {
   }
 
   // Sirve para obtener el cart de cada usuario y pasarlo al componente del product.component.ts, Asi obtiene la cantidad de cada producto
-  async getCart(): Promise<AngularFireObject<ShoppingCart>>{
-   let cartId = await this.getOrCreateCartId();
-   // console.log(cartId);
-  return this.db.object('/shopping-carts/' + cartId);
-  }
-  
+
+  async getCart(): Promise<Observable<ShoppingCart>> {
+  let cartId = await this.getOrCreateCartId();
+  return this.db.object('/shopping-carts/' + cartId)
+    .snapshotChanges()
+    .pipe(
+      map((x: any) => {
+        const items = x.payload.val().items;
+        return new ShoppingCart(items);
+      })
+    )
+}
+
+
   private async getOrCreateCartId(): Promise<string> {
     const cartId = localStorage.getItem('cartId');
     //console.log(cartId);
