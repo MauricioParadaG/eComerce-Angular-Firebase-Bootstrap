@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart.service';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
+cart$: Observable<ShoppingCart>;
 
-  constructor() { }
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
   }
+
 
 }
