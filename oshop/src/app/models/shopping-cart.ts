@@ -5,15 +5,25 @@ export class ShoppingCart{
    items: ShoppingCartItem[] = []; 
 
    constructor(public itemsMap: { [producId:string]: ShoppingCartItem }) {
-       for(const productId in itemsMap)
-       this.items.push(itemsMap[productId]);
-   }
-
+       for(const productId in itemsMap) {
+           let item = itemsMap[productId];
+        if (item.quantity !== 0){
+       this.items.push(new ShoppingCartItem (item.product, item.quantity));
+        }
+        }
+    }
 /*
     get productIDs(){
         return Object.keys(this.items);
     }
 */
+    get totalPrice(){
+        let sum = 0; 
+        for (const productId in this.items)
+           sum= sum + this.items[productId].subTotalPrice
+        return sum; 
+    }
+
     get totalItemsCount(){
         let count = 0;
         for (const productId in this.items){
