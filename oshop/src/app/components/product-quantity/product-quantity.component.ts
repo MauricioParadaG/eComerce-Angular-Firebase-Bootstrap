@@ -1,22 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/models/products';
 import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart.service';
-import { ShoppingCart } from 'src/app/models/shopping-cart';
-
+import { Product } from 'src/app/models/products';
 
 @Component({
-  selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  selector: 'app-product-quantity',
+  templateUrl: './product-quantity.component.html',
+  styleUrls: ['./product-quantity.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductQuantityComponent implements OnInit {
   @Input('product') product: Product;
-  @Input('shopping-cart') shoppingCart: ShoppingCart;
-  
+  @Input('shopping-cart') shoppingCart;
+
   constructor(private shoppingCartService : ShoppingCartService) { }
 
   addToCart(){
     this.shoppingCartService.addToCart(this.product);
+  }
+
+  removeFromCart(){
+    this.shoppingCartService.removeFromCart(this.product);
   }
 
   ngOnInit(): void {

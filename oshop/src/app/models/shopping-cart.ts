@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item';
+import { Product } from './products';
 
 export class ShoppingCart{
    // items: ShoppingCartItem[] = []; 
@@ -17,7 +18,14 @@ export class ShoppingCart{
         return Object.keys(this.items);
     }
 */
-    get totalPrice(){
+
+getQuantity(product: Product){
+    let item = this.itemsMap[product.key];
+    // console.log( "item " + item);
+    return item ? item.quantity: 0 ;
+  }
+
+get totalPrice(){
         let sum = 0; 
         for (const productId in this.items)
            sum= sum + this.items[productId].subTotalPrice

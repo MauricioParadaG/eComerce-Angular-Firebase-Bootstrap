@@ -42,6 +42,7 @@ import { ProductFilterComponent } from './components/products/product-filter/pro
 import { DemoComponent } from './components/demo/demo/demo.component';
 import { ProductCardComponent } from './components/shareUsersAdmin/product-card/product-card.component';
 import { ShoppingCartService } from './services/firebaseCart/shopping-cart.service';
+import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 
 
 
@@ -76,7 +77,8 @@ const routes: Route[] = [
     LoginComponent,
     ProductFilterComponent,
     DemoComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
    
   ],
   imports: [
