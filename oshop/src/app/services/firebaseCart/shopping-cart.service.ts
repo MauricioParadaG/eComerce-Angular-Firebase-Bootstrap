@@ -63,7 +63,9 @@ export class ShoppingCartService {
     
     item$.snapshotChanges().pipe(take(1)).subscribe(
       i => {
-      item$.update({product: product, quantity: ((i.payload.hasChild('quantity')) ? i.payload.val()['quantity'] + change : 1)  });
+      item$.update({title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price, quantity: ((i.payload.hasChild('quantity')) ? i.payload.val()['quantity'] + change : 1)  });
      // console.log('adding new product to cart');
       }
     )
