@@ -6,6 +6,7 @@ import { Subscription, Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/categories/category.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart.service';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
 
 
 @Component({
@@ -13,55 +14,40 @@ import { ShoppingCartService } from 'src/app/services/firebaseCart/shopping-cart
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   category: string;
   products: Product[] = [];
   filteredProducts: Product[] = [] ;
   
-  cart: any;
-  subscription:Subscription; 
+  cart$:Observable<ShoppingCart>;
+
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private shoppingCartService: ShoppingCartService
-  ) {
-    productService.getProducts().subscribe(products => { this.products = products; 
-
-    route.queryParamMap.subscribe(params => {
-      this.category = params.get('category');
-
-    this.filteredProducts = (this.category) ?
-      this.products.filter(p => p.category === this.category) :
-      this.products;
-
-    });
-    
-  });
-    
-  }
-
- async ngOnInit() {
-      this.subscription = (await this.shoppingCartService.getCart())
-      .subscribe(cart => this.cart = cart)
- }
+  ) {}
   
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
+    this.populateProducts();
   }
 
-  /*
-  private populateProducts() {
-    this.productService.getProducts()
-    .pipe(
-      switchMap(products => {
-        this.products = products;
-        
-      })
-    )
-    ;
-  }
-*/
+  private populateProducts(){
+      this.productService.getProducts().subscribe(products => { this.products = products; 
 
+      this.route.queryParamMap.subscribe(params => {
+        this.category = params.get('category');
+  
+        this.applyFilter();
+      });
+    });
+  }
+
+  private applyFilter(){
+    this.filteredProducts = (this.category) ?
+    this.products.filter(p => p.category === this.category) :
+    this.products;
+  }
 
 }
