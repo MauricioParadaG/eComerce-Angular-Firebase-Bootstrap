@@ -1,1 +1,9 @@
-<p>check-out works!</p>
+<h2 class= "ml-5">Invest Order - Step 2 of 3</h2>
+
+<div class= "row" *ngIf="cart$ | async as cart" >
+  <div class="col-6">
+    <app-shipping-form [cart]="cart"></app-shipping-form>
+  </div>
+
+  <div class="col-6"></div>
+</div>

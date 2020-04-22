@@ -1,6 +1,9 @@
 <h1>Investing Cart</h1>
 <div class= "row col-12" *ngIf="cart$ | async as cart">
-  <p>You have {{ cart.totalItemsCount }} properties in your investing cart</p>
+  <p>You have {{ cart.totalItemsCount }} properties in your investing cart
+  <button *ngIf="cart.items.length" (click) ="clearCart()" class="btn btn-light btn-sm ml-5">Clear Investing Cart</button>
+  </p>
+  
   <table class=table>
     <thead>
       <tr>
@@ -28,5 +31,5 @@
       <th class="text-right">{{cart.totalPrice | currency:'USD'}}</th>
     </tfoot>
   </table>
-  <button (click) ="clearCart()" class="btn btn-danger btn-sm">Clear Investing Cart</button>
+  <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-warning ml-5 mb-4">Check Out Your Invest</a>
 </div>

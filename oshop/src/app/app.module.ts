@@ -38,11 +38,15 @@ import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { CategoryService } from './services/categories/category.service';
 import { ProductService } from './services/firebase/product.service';
+import { ShoppingCartService } from './services/firebaseCart/shopping-cart.service';
+import { OrderService } from './services/firebaseOrder/order.service';
+
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { DemoComponent } from './components/demo/demo/demo.component';
 import { ProductCardComponent } from './components/shareUsersAdmin/product-card/product-card.component';
-import { ShoppingCartService } from './services/firebaseCart/shopping-cart.service';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
+import { ShippingFormComponent } from './components/check-out/shipping-form/shipping-form.component';
+
 
 
 
@@ -78,7 +82,8 @@ const routes: Route[] = [
     ProductFilterComponent,
     DemoComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShippingFormComponent
    
   ],
   imports: [
@@ -99,7 +104,8 @@ const routes: Route[] = [
     AdminAuthGuardService,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
