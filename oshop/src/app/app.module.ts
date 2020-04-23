@@ -46,6 +46,7 @@ import { DemoComponent } from './components/demo/demo/demo.component';
 import { ProductCardComponent } from './components/shareUsersAdmin/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { ShippingFormComponent } from './components/check-out/shipping-form/shipping-form.component';
+import { ShoppingCartSummaryComponent } from './components/shopping-cart/shopping-cart-summary/shopping-cart-summary.component';
 
 
 
@@ -57,7 +58,7 @@ const routes: Route[] = [
   {path: 'shopping-cart', component: ShoppingCartComponent },
   {path: 'login', component: LoginComponent },
   {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
-  {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
+  {path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
   {path: 'my/orders', component:MyOrdersComponent, canActivate: [AuthGuardService]},
   {path: 'admin/products', component: AdminProductComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
   {path: 'admin/products/new', component: ProductFormComponent , canActivate: [AuthGuardService, AdminAuthGuardService] },
@@ -83,7 +84,8 @@ const routes: Route[] = [
     DemoComponent,
     ProductCardComponent,
     ProductQuantityComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    ShoppingCartSummaryComponent
    
   ],
   imports: [
