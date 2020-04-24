@@ -1,10 +1,16 @@
 import { ShoppingCart } from './shopping-cart';
 
+export interface IOrderItem {
+  product: { title: string; imageUrl: string; price: number };
+  quantity: number;
+  totalPrice: number;
+}
+
 export class Order{
   datePlaced:number;
   items: any[];
 
-  constructor (public user:any, public shipping: any, shoppingCart: ShoppingCart){
+  constructor (public userId:string, public shipping: any, shoppingCart: ShoppingCart){
     this.datePlaced = new Date().getTime();
 
    this. items =  shoppingCart.items.map(i => {
