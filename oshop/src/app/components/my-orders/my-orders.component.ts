@@ -13,15 +13,12 @@ import { Order } from 'src/app/models/order';
 })
 export class MyOrdersComponent implements OnInit {
   orders$: Observable<any[]>;
-  order:any;
-  orderId: string; 
-
   userId: string;
   // button for showing extra content
-  expanding: boolean = false;
-  expandingOrder;
-
-  
+  showingOrder: any;
+  showingInfo: boolean = false;
+  //order:any;
+  //orderId: string; 
 
   constructor(
     private orderService: OrderService,
@@ -34,9 +31,8 @@ export class MyOrdersComponent implements OnInit {
         this.orders$ = orderService.getOrdersByUser(this.userId);
       });
       
-
-      this.orderId = this.route.snapshot.paramMap.get('id');
-      console.log(this.orderId);
+    //  this.orderId = this.route.snapshot.paramMap.get('id');
+    //  console.log(this.orderId);
 
     /*
     this.orders$ = authService.user$.pipe(switchMap(
@@ -45,23 +41,14 @@ export class MyOrdersComponent implements OnInit {
     */
   }
 
-  getTotalOrderPrice(){
-    let sum = 0; 
-    if (this.order){
-    this.order.items.forEach(item => 
-     sum = sum + item.totalPrice +1); 
-    }return sum; 
+  expandOrder(event, order){
+    //console.log(order);
+    this.showingInfo = !this.showingInfo;
+    this.showingOrder = order;
   }
 
-
-  expandOrder(event, order) {
-     //console.log(order.datePlaced);
-     this.expanding = !this.expanding;
-     this.expandingOrder = order;
-   }
-
    async ngOnInit() {
-    this.order = await this.orderService.getOrderId(this.orderId);
+  //  this.order = await this.orderService.getOrderId(this.orderId);
   //  this.orders$ = await this.orderService.getOrderId(this.orderId);
   }
 }
