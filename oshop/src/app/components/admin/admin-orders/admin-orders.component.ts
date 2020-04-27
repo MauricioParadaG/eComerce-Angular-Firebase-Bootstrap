@@ -8,9 +8,17 @@ import { OrderService } from 'src/app/services/firebaseOrder/order.service';
 })
 export class AdminOrdersComponent implements OnInit {
   orders$;
-  
+  showingOrder: any;
+  showingInfo: boolean = false;
+
   constructor( private orderService: OrderService) { 
     this.orders$ = this.orderService.getOrders();
+  }
+
+  expandOrder(event, order){
+    //console.log(order);
+    this.showingInfo = !this.showingInfo;
+    this.showingOrder = order;
   }
 
   ngOnInit(): void {

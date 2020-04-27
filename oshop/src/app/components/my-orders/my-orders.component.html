@@ -4,16 +4,33 @@
     <tr>
       <th>Paying Customer Name</th>
       <th>Date</th>
-      <th>Details</th>
+      <th>Order T.Price</th>
+      <th>Info</th>
+      <th></th>
     </tr>
-  </thead> 
+  </thead>
   <tbody>
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
+      <td> </td>
+      <td>
+        <button (click)="expandOrder($event, order)" class="btn btn-secondary">
+          Expand
+        </button>
+      </td>
+      <div *ngIf="expanding">
+        <form>
+          <div class="form-group mt-2">
+            <input type="text" name="title" class="form-control">
+          </div>
+        </form>
+      </div>
+
+
       <td>
         <a href="#">View</a>
       </td>
     </tr>
-  </tbody> 
+  </tbody>
 </table>

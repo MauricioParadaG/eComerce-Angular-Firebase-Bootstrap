@@ -3,6 +3,8 @@ import { OrderService } from 'src/app/services/firebaseOrder/order.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Order } from 'src/app/models/order';
 
 @Component({
   selector: 'app-my-orders',
@@ -10,18 +12,31 @@ import { Observable } from 'rxjs';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent implements OnInit {
-  orders$;
+  orders$: Observable<any[]>;
+  order:any;
+  orderId: string; 
+
   userId: string;
+  // button for showing extra content
+  expanding: boolean = false;
+  expandingOrder;
+
+  
 
   constructor(
     private orderService: OrderService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {
     authService.user$.subscribe(
       u => {
         this.userId = u.uid;
         this.orders$ = orderService.getOrdersByUser(this.userId);
       });
+      
+
+      this.orderId = this.route.snapshot.paramMap.get('id');
+      console.log(this.orderId);
 
     /*
     this.orders$ = authService.user$.pipe(switchMap(
@@ -30,7 +45,23 @@ export class MyOrdersComponent implements OnInit {
     */
   }
 
-  ngOnInit() {
+  getTotalOrderPrice(){
+    let sum = 0; 
+    if (this.order){
+    this.order.items.forEach(item => 
+     sum = sum + item.totalPrice +1); 
+    }return sum; 
   }
 
+
+  expandOrder(event, order) {
+     //console.log(order.datePlaced);
+     this.expanding = !this.expanding;
+     this.expandingOrder = order;
+   }
+
+   async ngOnInit() {
+    this.order = await this.orderService.getOrderId(this.orderId);
+  //  this.orders$ = await this.orderService.getOrderId(this.orderId);
+  }
 }

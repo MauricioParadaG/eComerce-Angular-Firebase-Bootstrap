@@ -1,14 +1,14 @@
 import { ShoppingCart } from './shopping-cart';
 
 export interface IOrderItem {
-  product: { title: string; imageUrl: string; price: number };
+  product: { imageUrl: string; price: number, title: string; };
   quantity: number;
   totalPrice: number;
 }
 
 export class Order{
   datePlaced:number;
-  items: any[];
+  items: IOrderItem[];
 
   constructor (public userId:string, public shipping: any, shoppingCart: ShoppingCart){
     this.datePlaced = new Date().getTime();
@@ -24,6 +24,14 @@ export class Order{
           totalPrice: i.subTotalPrice
       };  
     });
-
   }
+
+  get totalOrderPrice1(){
+    let sum = 0; 
+    for (const orderId in this.items)
+       sum= sum + this.items[orderId].totalPrice
+       console.log(sum)
+    return sum; 
+  }
+
 }

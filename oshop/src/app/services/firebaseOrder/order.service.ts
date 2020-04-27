@@ -17,6 +17,20 @@ export class OrderService {
     return this.db.list('/orders').valueChanges();
   }
 
+  getOrderId(orderId: string){
+    return this.db.object('/orders/' + orderId).snapshotChanges().pipe(
+      map((order:any) => {
+        if (order.payload.exists()){
+          const data = order.payload.val();
+          const key = order.payload.key;
+          return {key, ...data};
+        } else {
+          return null;
+        }
+      }
+    ))
+  }
+  
   getOrdersByUser(userId: string) {
     return this.db.list('/orders', query =>
      query.orderByChild('userId').equalTo(userId))

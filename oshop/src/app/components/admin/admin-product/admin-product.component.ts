@@ -39,7 +39,7 @@ export class AdminProductComponent implements OnInit, OnDestroy {
   }
 
   editProduct(event, product) {
-   // console.log(product);
+    //console.log(product);
     this.editing = !this.editing;
     this.editingProduct = product;
   }

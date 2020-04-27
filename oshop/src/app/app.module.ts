@@ -47,6 +47,8 @@ import { ProductCardComponent } from './components/shareUsersAdmin/product-card/
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { ShippingFormComponent } from './components/check-out/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart/shopping-cart-summary/shopping-cart-summary.component';
+import { OrderDetailComponent } from './components/my-orders/order-detail/order-detail.component';
+import { OrderTotalPriceComponent } from './components/my-orders/order-total-price/order-total-price.component';
 
 
 
@@ -85,7 +87,9 @@ const routes: Route[] = [
     ProductCardComponent,
     ProductQuantityComponent,
     ShippingFormComponent,
-    ShoppingCartSummaryComponent
+    ShoppingCartSummaryComponent,
+    OrderDetailComponent,
+    OrderTotalPriceComponent
    
   ],
   imports: [

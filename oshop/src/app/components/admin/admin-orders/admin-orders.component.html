@@ -4,16 +4,33 @@
     <tr>
       <th>Customer</th>
       <th>Date</th>
-      <th>Details</th>
+      <th>T.Order Price</th>
+      <th>Info</th>
+      <th></th>
     </tr>
-  </thead> 
+  </thead>
   <tbody>
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
-        <a href="#">View</a>
+        <!-- total price order component -->
+        <app-order-total-price [order]="order"></app-order-total-price>
+      </td>
+      <td>
+        <button (click)="expandOrder($event, order)" class="btn btn-secondary btn-sm">
+          Expand
+        </button>
+      </td>
+      <!-- more info with this button get expand -->
+      <div *ngIf="showingInfo && showingOrder.datePlaced == order.datePlaced">
+
+        <app-order-detail [order]="order"></app-order-detail>
+        
+      </div>
+
+      <td>
       </td>
     </tr>
-  </tbody> 
+  </tbody>
 </table>

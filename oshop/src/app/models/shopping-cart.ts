@@ -30,7 +30,7 @@ get totalPrice(){
         for (const productId in this.items)
            sum= sum + this.items[productId].subTotalPrice
         return sum; 
-    }
+}
 
     get totalItemsCount(){
         let count = 0;
