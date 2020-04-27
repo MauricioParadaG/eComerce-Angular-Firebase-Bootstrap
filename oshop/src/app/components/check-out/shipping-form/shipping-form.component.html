@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form class= "ml-3" #f="ngForm">
     <div class="form-group">
       <label for="">Name</label>
       <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
@@ -42,6 +42,7 @@
       <button
       [disabled]="!f.valid"
       (click)="placeOrder()"
-      class="btn btn-warning">Order Your Properties 
+      class="btn btn-warning col-sm-12 col-md-6 col-lg-5">
+      Order Your Properties 
     </button>
 </form>

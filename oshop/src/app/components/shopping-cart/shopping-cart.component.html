@@ -1,35 +1,50 @@
-<h1>Investing Cart</h1>
-<div class= "row col-12" *ngIf="cart$ | async as cart">
-  <p>You have {{ cart.totalItemsCount }} properties in your investing cart
-  <button *ngIf="cart.items.length" (click) ="clearCart()" class="btn btn-light btn-sm ml-5">Clear Investing Cart</button>
-  </p>
-  
-  <table class=table>
+<h1 class="ml-5 mb-4">Investing Cart</h1>
+<div class="row col-sm-12 col-md-11 col-lg-11" *ngIf="cart$ | async as cart">
+  <div class="card-body col-sm-12">
+    <p>You have {{ cart.totalItemsCount }} properties in your investing cart
+      <button *ngIf="cart.items.length" (click)="clearCart()"
+        class="float-right btn btn-light btn-sm col-sm-10 col-md-3 col-lg-3">Clear Investing Cart</button>
+    </p>
+  </div>
+
+  <table class=table col-sm-12>
     <thead>
       <tr>
         <th style="width: 110px"></th>
         <th style="width: 200px">Product</th>
         <th>Price </th>
         <th class="text-center">Quantity</th>
-        <th class= "text-right">SubTotal</th>
+        <th class="text-right">SubTotal</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let item of cart.items">
-        <td><div [style.backgroundImage]="'url('+ item.imageUrl +')'" class="thumbnail"></div></td>
+        <td>
+          <div [style.backgroundImage]="'url('+ item.imageUrl +')'" class="thumbnail"></div>
+        </td>
         <td>{{item.title}}</td>
         <td>{{item.price | currency:"USD"}}</td>
-        <td><app-product-quantity [product]= "item" [shopping-cart]="cart"></app-product-quantity></td>
+        <td>
+          <app-product-quantity [product]="item" [shopping-cart]="cart"></app-product-quantity>
+        </td>
         <td class="text-right">{{item.subTotalPrice | currency:'USD'}}</td>
       </tr>
     </tbody>
     <tfoot>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th class="text-right">{{cart.totalPrice | currency:'USD'}}</th>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{cart.totalPrice | currency:'USD'}}</th>
+      </tr>
+      <tr>
+        <th colspan="5">
+          <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-warning ml-2 col-sm-4 mb-4">Check Out Your
+            Invest</a>
+        </th>
+      </tr>
     </tfoot>
   </table>
-  <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-warning ml-5 mb-4">Check Out Your Invest</a>
 </div>

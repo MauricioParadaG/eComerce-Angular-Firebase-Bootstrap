@@ -1,11 +1,11 @@
 <h2 class= "ml-5">Invest Order - Step 2 of 3</h2>
 
 <div class= "row" *ngIf="cart$ | async as cart" >
-  <div class="col-6">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <app-shipping-form [cart]="cart"></app-shipping-form>
   </div>
 
-  <div class="col-6">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
   </div>
 </div>
