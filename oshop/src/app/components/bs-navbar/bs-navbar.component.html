@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light bg-secondary fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <a class="navbar-brand" routerLink="/">
-    <i class="fab fa-bimobject fa-lg" style="color:#FFFFFF; width:6; height:6;"></i>
+   <img src="./../../../assets/img/Logo.png" alt="logo" class="logo">
   </a>
   <!--Boton responsive Collapse aria-expanded="false"-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -14,9 +14,9 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link ml-4" routerLink="/shopping-cart" (click)="isCollapsed = true">
+        <a class="nav-link ml-5" routerLink="/shopping-cart" (click)="isCollapsed = true">
           <!--Icon ShoppingCart -->
-          <i class="fas fa-shopping-cart fa-lg" style="color:#FFFFFF; width:6; height:6;"></i>
+          <i class="fas fa-shopping-cart fa-lg" style="margin-left: 50px; color:rgb(0, 0, 0); width:6; height:6;"></i>
           <span class="badge badge-danger badge-pill pt-1 pb-1 ml-1" *ngIf="cart$ | async as cart">
             {{ cart.totalItemsCount }}</span>
         </a>
