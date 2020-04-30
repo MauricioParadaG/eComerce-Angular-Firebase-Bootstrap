@@ -9,6 +9,8 @@
     <button  
     *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
     (click)="addToCart()"  class="btn btn-secondary btn-block">Add to Invest Cart
+    <!-- Icon shopping Cart -->
+    <i class="fa fa-cart-arrow-down fa-lg"></i> 
   </button>
 
     <ng-template #updateQuantity>

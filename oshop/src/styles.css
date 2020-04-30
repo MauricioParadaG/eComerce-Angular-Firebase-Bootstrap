@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    padding-top: 80px;
+    padding-top: 87px;
   }
+
+.navbar{
+  border-bottom:2px solid #942626;
+  padding-bottom:25px
+  }
+
+  

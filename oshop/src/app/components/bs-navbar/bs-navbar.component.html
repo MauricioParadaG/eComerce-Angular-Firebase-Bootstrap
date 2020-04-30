@@ -16,7 +16,7 @@
       <li class="nav-item">
         <a class="nav-link ml-5" routerLink="/shopping-cart" (click)="isCollapsed = true">
           <!--Icon ShoppingCart -->
-          <i class="fas fa-shopping-cart fa-lg" style="margin-left: 50px; color:rgb(0, 0, 0); width:6; height:6;"></i>
+          <i class="fas fa-shopping-cart fa-lg" style="margin-left: 75px; color:rgb(0, 0, 0); width:6; height:6;"></i>
           <span class="badge badge-danger badge-pill pt-1 pb-1 ml-1" *ngIf="cart$ | async as cart">
             {{ cart.totalItemsCount }}</span>
         </a>
@@ -29,7 +29,9 @@
   <!--y Login dentro de template para cumple el else -->
   <ng-template #anonymousUser>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/login" (click)="isCollapsed = true">Login</a>
+      <a class="nav-link" routerLink="/login" (click)="isCollapsed = true"><b>Login  </b>
+        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+      </a>
     </li>
   </ng-template>
     
