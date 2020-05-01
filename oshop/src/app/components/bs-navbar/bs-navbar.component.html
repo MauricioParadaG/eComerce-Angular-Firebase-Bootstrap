@@ -10,13 +10,14 @@
 
   </button>
 
-<!--Header: Shopping cart  y Login -->
+<!--Buttom collapsing div-->
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+<!--Header: Shopping cart  y Login -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link ml-5" routerLink="/shopping-cart" (click)="isCollapsed = true">
           <!--Icon ShoppingCart -->
-          <i class="fas fa-shopping-cart fa-lg" style="margin-left: 75px; color:rgb(0, 0, 0); width:6; height:6;"></i>
+          <i class="fas fa-shopping-cart fa-lg" style="margin-left: 75px; color:#000; width:6; height:6;"></i>
           <span class="badge badge-danger badge-pill pt-1 pb-1 ml-1" *ngIf="cart$ | async as cart">
             {{ cart.totalItemsCount }}</span>
         </a>

@@ -29,13 +29,11 @@
 
 
 
-   .mastfoot {
-    width: 100%;
-    height: 50px;
-    bottom: 0;  /* para que se quede pegado al piso  */
-    position: fixed;
-   color: rgba(2, 2, 2, 0.5); 
-   } 
+.footer {
+  width: 100%;     /* el tamaño del contenido*/
+  /*height: 50px;      no esta haciendo nada*/
+  color: rgba(2, 2, 2, 0.5); 
+} 
 
   
 .btn{ 
@@ -55,6 +53,23 @@ h1 {
 p {
     margin-bottom: 15px; /* o el tamaño que quieres que exista entre h1 y el siguiente elemento */
    }
+
+/* Da color a la imagen de fondo */
+.dark-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+}
+
+
+.fa {
+  font-size: 50px; 
+}
+
+
 
 /* font-family: tahoma; */
 /* font-weight: 700; */
@@ -169,17 +184,17 @@ border: 2px solid transparent;
 
 
 #showcase {
-    margin-top: -28px;
-  }
-  
-  .carousel-item {
-    height: 548px; 
-  }
-  
-  .carousel-image-1 {
-    background: url('../../../assets/img/background.jpg');
-    background-size: cover; 
-  }
+  margin-top: -28px;
+}
+
+.carousel-item {
+  height: 548px; 
+}
+
+.carousel-image-1 {
+  background: url('../../../assets/img/background.jpg');
+  background-size: cover; 
+}
   /* 
   .carousel-image-2 {
     background: url('../../../assets/img/salad.jpg');
@@ -208,20 +223,6 @@ border: 2px solid transparent;
   */
 
 
-  .dark-overlay {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-  }
 
-  
-    
-  
-  .fa {
-    font-size: 50px; 
-  }
    
  
